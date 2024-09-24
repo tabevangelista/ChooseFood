@@ -1,0 +1,1 @@
+A random number generator that prompts the user to enter the amount of food choices they are craving and will create and append to the array. The program will randomly select a food choice according to the array index. 
