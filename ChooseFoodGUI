@@ -1,0 +1,98 @@
+import java.util.*;
+import javax.swing.*; 
+import java.awt.event;
+
+public class ChooseFoods {
+    static Scanner scan = new Scanner(System.in);
+    static int numChoices; 
+    static String[] foodChoices;
+    static JFrame frame;
+    static JTextField textfield;
+    static JButton button;
+    static JPanel panel;
+    static JLabel question, result;
+
+    public static void main (String[] args) {
+        createWindow();
+        // printArray(foodChoices);
+        // chooseFood();
+    }
+    
+    // needa make gui 
+    public static void createWindow() {
+    // create frame
+        frame = new JFrame();
+        frame.setSize(300, 200);
+        frame.setTitle("ChooseFood");
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    // create panel 
+        panel = new JPanel();
+        panel.setSize(350, 200);
+        panel.setLayout(null);
+        frame.add(panel);
+
+    // create labels 
+        question = new JLabel();
+        question.setText("How many choices do you have in mind?");
+        question.setBounds(20, 20, 300, 30);
+        panel.add(question);
+
+    // create textfield
+        textfield = new JTextField();
+        textfield.setBounds(120, 50, 40, 20);
+        panel.add(textfield);
+
+    // create button 
+        button = new JButton("Submit");
+        button.setBounds(92, 75, 100, 30);
+        panel.add(button);       
+
+    // create result label
+        result = new JLabel(); 
+        result.setBounds(20, 100, 300, 30);
+        panel.add(result);
+        
+
+        frame.setVisible(true);
+}   
+    public static void makeArray() {
+        try {
+            numChoices = Integer.parseInt(textfield.getText());
+            //System.out.println("How many choices do you have in mind? ");
+            //numChoices = scan.nextInt();
+            foodChoices = new String[numChoices];
+            //System.out.println("What are you craving?"); 
+        
+            for (int i = 0; i < numChoices; i++) { // makes the array with your cravings
+            foodChoices[i] = scan.next(); 
+        }
+    }
+    catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Please enter a valid number.");
+        }
+    }
+
+    // need to open a new page just to make the user be able to write choices 
+
+    public static void printArray(String[] foodChoices) {
+        System.out.println("Here are your choices: ");
+        for (int i = 0; i < numChoices; i++){
+            System.out.print(foodChoices[i]);
+            if (i < numChoices - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void chooseFood() {
+        System.out.println("You should eat......"); 
+        int index = (int) (Math.random() * numChoices);
+        String choice = foodChoices[index];
+
+    System.out.println(choice);
+}
+}
+
